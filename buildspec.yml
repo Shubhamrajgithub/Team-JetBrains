@@ -7,9 +7,9 @@ phases:
   build:
     commands:
       - echo "Building Docker image..."
-      - docker build -t Dockerfile .
+      - docker build -t jetbrains11 -f Dockerfile .
       - echo "Tagging Docker image..."
-      - docker tag Dockerfile:latest446641444093.dkr.ecr.us-east-1.amazonaws.com/jetbrains11:latest
+      - docker tag Dockerfile:latest 446641444093.dkr.ecr.us-east-1.amazonaws.com/jetbrains11:latest
   post_build:
     commands:
       - echo "Pushing Docker image to Amazon ECR..."
