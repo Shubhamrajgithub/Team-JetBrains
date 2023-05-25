@@ -1,0 +1,56 @@
+# replicaCount: 2
+
+# image:
+#   repository: shubhamdocker121/myimage
+#   pullPolicy: IfNotPresent
+#   tag: "latest"
+
+# service:
+#   type: LoadBalancer
+#   port: 3000
+#   targetPort: 3000
+#   protocol: TCP
+#   name: node-app-service
+
+# resources: {}
+# limits:
+#     cpu: 100m
+#     memory: 256Mi
+# requests:
+#     cpu: 100m
+#     memory: 256Mi
+
+# autoscaling:
+#   enabled: false
+#   minReplicas: 1
+#   maxReplicas: 100
+#   targetCPUUtilizationPercentage: 80
+
+
+  replicaCount: 2
+
+image:
+  repository: shubhamdocker121/myimage
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 3000
+  targetPort: 3000
+  protocol: TCP
+  name: node-app-service
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 256Mi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80

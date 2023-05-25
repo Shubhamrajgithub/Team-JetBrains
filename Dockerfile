@@ -1,15 +1,20 @@
-# It will pull node:18-alpine as the base image from Docker Hub
+# Specify the base image
 FROM node:18-alpine
-# It creates the container working directory named `node`
-WORKDIR /node
-# It copies all the dependencies and libraries to the working directory
-COPY package.json .
-#It installs all the dependencies and libraries to the container
-RUN npm install
-#It copies all the source code and configuration files to the container working directory
-COPY . .
-#it exposes and runs the container to port 4000
-EXPOSE 3000
-#It is the command to start and run the container for the Node.js application
+ENV NODE_ENV=production
+# Set the working directory in the container
+WORKDIR /app
 
+# Copy package.json and package-lock.json (if available) to the working directory
+COPY ["package.json", "package-lock.json*", "./"]
+
+# Install project dependencies
+RUN npm install --production
+
+# Copy the entire project to the working directory
+COPY . .
+
+# Expose a port if your Node.js application listens on a specific port
+# EXPOSE 3000
+
+# Specify the command to run your Node.js application
 CMD ["node", "index.js"]
